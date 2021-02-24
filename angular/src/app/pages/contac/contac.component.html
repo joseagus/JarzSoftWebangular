@@ -1,0 +1,30 @@
+<app-menu-login></app-menu-login>
+<section class="container pt-5">
+    <section class="card p-4">
+        <h1>Contac us</h1>
+        <form ngNativeValidate (ngSubmit)="contactar()">
+            <section class="mb-3">
+                <label for="exampleInputName" class="form-label">Nombre</label>
+                <input name="userName" [(ngModel)]="userInfo.name" [ngModelOptions]={standalone:true} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div *ngIf="userInfoValidator.name" id="emailHelp" class="form-text text-danger">Nombre no valido</div>
+            </section>
+            <section class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input name="email" [(ngModel)]="userInfo.email" [ngModelOptions]={standalone:true} type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div *ngIf="userInfoValidator.email" id="emailHelp" class="form-text text-danger">Email no valido</div>
+            </section>
+            <section class="mb-3">
+                <label for="exampleInputMobil" class="form-label">Celular</label>
+                <input name="mobil" [(ngModel)]="userInfo.mobil" [ngModelOptions]={standalone:true} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div *ngIf="userInfoValidator.mobil" id="emailHelp" class="form-text text-danger">Celular no valido</div>
+            </section>
+            <section class="mb-3">
+                <label for="exampleInputmessage" class="form-label">Mensaje</label>
+                <input name="message" [(ngModel)]="userInfo.message" [ngModelOptions]={standalone:true} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div *ngIf="userInfoValidator.message" id="emailHelp" class="form-text text-danger">Mensaje no valido</div>
+            </section>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+</section>
+<app-footer></app-footer>
