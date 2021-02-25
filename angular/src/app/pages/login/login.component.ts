@@ -51,7 +51,11 @@ export class LoginComponent implements OnInit {
     if(this.userInfo.userName !== "" && this.userInfo.password !== "" && this.userInfo.email !== ""){
       //puedo servir para hacer consultas a api's a BD o Consumir servicios
       localStorage.setItem('userInfo',JSON.stringify(this.userInfo))
-      this.router.navigate(['/'])
+      
+      localStorage.setItem('usuario',this.userInfo.userName)
+      localStorage.setItem('email',this.userInfo.email)
+
+      this.router.navigate(['/dashboard'])
     } 
     // localStorage.clear()
     this.variableTemporal=localStorage.getItem('userInfo')

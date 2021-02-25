@@ -12,7 +12,8 @@ import { MenuLoginComponent } from './components/menu-login/menu-login.component
 //forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContacComponent } from './pages/contac/contac.component';
-import { FooterComponent } from './components/footer/footer.component'
+import { FooterComponent } from './components/footer/footer.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FooterComponent } from './components/footer/footer.component'
     LoginComponent,
     MenuLoginComponent,
     ContacComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
