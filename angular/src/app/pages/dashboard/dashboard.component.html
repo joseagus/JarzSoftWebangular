@@ -4,11 +4,7 @@
         <form ngNativeValidate (ngSubmit)="salir()">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address: </label>
-                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled value="{{Email}}">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Username: </label>
-                <input name="User" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled value="{{User}}">
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled value="{{user.email}}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

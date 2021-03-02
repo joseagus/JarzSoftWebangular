@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import firebase from 'firebase';
+import User = firebase.User;
+
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,14 +13,18 @@ import { Router } from '@angular/router'
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private router:Router
+    private router:Router,
+    private authService: AuthService
+    
   ) { }
-  
+
   ngOnInit(): void {
     
   }
-  User = localStorage.getItem('usuario');  
-  Email = localStorage.getItem('email');   
+  get user(): User {
+    return this.authService.user;
+  }
+  
 
   salir(){    
       this.router.navigate(['/'])
