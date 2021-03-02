@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {AuthService} from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,65 +10,40 @@ import { Router } from '@angular/router'
 })
 export class LoginComponent implements OnInit {
 
+  form: FormGroup;
+
   constructor(
-    private router:Router
-  ) { }
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+  }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
   }
-  userInfo = {
-    email:"",
-    password:"",
-    userName:""
-  }
-  userInfoValidator = {
-    email:false,
-    password:false,
-    userName:false
-  }
-  variableTemporal = {}
-  registrar(){    
-    // Javascript Object notation [1,2,3,4,5,65] "hola como estan"
-    //validacion de email
-    if(this.userInfo.email === ""){
-      console.log("email esta vacio")
-      this.userInfoValidator.email=true
-    }else{
-      this.userInfoValidator.email=false
-    }
-    //validacion de contraseña
-    if(this.userInfo.password === ""){
-      console.log("password esta vacio")
-      this.userInfoValidator.password=true
-    }else{
-      this.userInfoValidator.password=false
-    }
-    //validacion de userName
-    if(this.userInfo.userName === ""){
-      console.log("userName esta vacio")
-      this.userInfoValidator.userName=true
-    }else{
-      this.userInfoValidator.userName=false
-    }
-    if(this.userInfo.userName !== "" && this.userInfo.password !== "" && this.userInfo.email !== ""){
-      //puedo servir para hacer consultas a api's a BD o Consumir servicios
-      localStorage.setItem('userInfo',JSON.stringify(this.userInfo))
-      
-      localStorage.setItem('usuario',this.userInfo.userName)
-      localStorage.setItem('email',this.userInfo.email)
 
-      this.router.navigate(['/dashboard'])
-    } 
-    // localStorage.clear()
-    this.variableTemporal=localStorage.getItem('userInfo')
-    console.log('temp',this.variableTemporal)
-    console.log(' esto es la informacion del usuario ',this.userInfo)
-    console.log('esto es la validación de los datos',this.userInfoValidator)
-
+  get email(): string {
+    return this.form.get('email').value;
   }
+
+  get password(): string {
+    return this.form.get('password').value;
+  }
+
+  login(): void {
+    const {email, password} = this.form.getRawValue();
+    this.authService.login(email, password)
+      .then(response => {
+        this.authService.setUser(response.user);
+        this.router.navigate(['/dashboard']);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  }
+
 }
-/*
-  *ngIf="" 
-  hermanos del ngIf: Vue: v-if:true React {condition ? render() || none}
-  ngFor
-*/

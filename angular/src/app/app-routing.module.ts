@@ -4,6 +4,8 @@ import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ContacComponent } from './pages/contac/contac.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -21,7 +23,9 @@ const routes: Routes = [
   ,
   {
     path:'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
+    
   }
 ];
 

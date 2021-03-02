@@ -13,7 +13,12 @@ import { MenuLoginComponent } from './components/menu-login/menu-login.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContacComponent } from './pages/contac/contac.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component'
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { IconDetailComponent } from './components/icon-detail/icon-detail.component'
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -26,13 +31,18 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component'
     MenuLoginComponent,
     ContacComponent,
     FooterComponent,
-    DashboardComponent
+    DashboardComponent,
+    IconDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
