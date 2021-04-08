@@ -19,6 +19,9 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { NosotrosComponent } from './pages/nosotros/nosotros.component';
+import { EvolutionComponent } from './pages/evolution/evolution.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     ContacComponent,
     FooterComponent,
     DashboardComponent,
-    IconDetailComponent
+    IconDetailComponent,
+    NosotrosComponent,
+    EvolutionComponent
   ],
   imports: [
     BrowserModule,

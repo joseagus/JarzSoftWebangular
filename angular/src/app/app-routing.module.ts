@@ -5,6 +5,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { ContacComponent } from './pages/contac/contac.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
+import { NosotrosComponent } from './pages/nosotros/nosotros.component';
+import { EvolutionComponent } from './pages/evolution/evolution.component';
+
 
 const routes: Routes = [
   {
@@ -19,6 +22,16 @@ const routes: Routes = [
   {
     path:'contac',
     component: ContacComponent
+  }
+  ,
+  {
+    path:'nosotros',
+    component: NosotrosComponent
+  }
+  ,
+  {
+    path:'evolution',
+    component: EvolutionComponent
   }
   ,
   {
